@@ -39,6 +39,7 @@ export const Row = ({ title, fetchUrl, isLargeRow }: Props) => {
   useEffect(() => {
     async function fetchData() {
       const request = await axios.get(fetchUrl);
+      console.log(JSON.stringify(request));
       setMovies(request.data.results);
       return request;
     }
