@@ -1,18 +1,14 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./Nav.scss";
 
-type Props = {
-  className?: string;
-};
-
-export const Nav = (props: Props) => {
+export const Nav = () => {
   const [show, setShow] = useState(false);
   useEffect(() => {
     const handleShow = () => {
-      if (window.scrollY > 100) {
-        setShow(true);
-      } else {
+      if (window.scrollY <= 100) {
         setShow(false);
+      } else {
+        setShow(true);
       }
     };
 
@@ -29,10 +25,9 @@ export const Nav = (props: Props) => {
         alt="Netflix Logo"
       />
       <img
-        className="Nav-avater"
+        className="Nav-avatar"
         src="https://i.pinimg.com/originals/0d/dc/ca/0ddccae723d85a703b798a5e682c23c1.png"
-        alt="Avatar"
-      />
+       alt="avatar"/>
     </div>
   );
 };

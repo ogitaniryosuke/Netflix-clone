@@ -1,14 +1,12 @@
-import { request } from "https";
 import React, { useState, useEffect } from "react";
-import { DEFAULT_MIN_VERSION } from "tls";
 import axios from "./../axios";
-import { requests } from "./../request";
+import { requests } from "../request";
 import "./Banner.scss";
 
 type movieProps = {
   title?: string;
   name?: string;
-  orignal_name?: string;
+  original_name?: string;
   backdrop_path?: string;
   overview?: string;
 };
@@ -17,10 +15,10 @@ export const Banner = () => {
   const [movie, setMovie] = useState<movieProps>({});
   useEffect(() => {
     async function fetchData() {
-      const request = await axios.get(requests.feachNetflixOriginals);
+      const request = await axios.get(requests.fetchNetflixOriginals);
       console.log(request.data.result);
 
-      //apiからランんダムで値を取得している
+      //apiからランダムで値を取得している
       setMovie(
         request.data.results[
           Math.floor(Math.random() * request.data.results.length - 1)
@@ -28,7 +26,7 @@ export const Banner = () => {
       );
       return request;
     }
-    fetchData();
+    fetchData()
   }, []);
   console.log(movie);
 
@@ -51,7 +49,7 @@ export const Banner = () => {
     >
       <div className="Banner-contents">
         <h1 className="banner-title">
-          {movie?.title || movie?.name || movie?.orignal_name}
+          {movie?.title || movie?.name || movie?.original_name}
         </h1>
         <div className="Banner-buttons">
           <button className="Banner-button">Play</button>
